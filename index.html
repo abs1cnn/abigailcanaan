@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abigail Canaan</title>
+<meta name="description" content="Abigail Canaan: desarrolladora backend, analista funcional y bases de datos. Estudiante de Ingeniería en Sistemas, UTN Córdoba.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: estilo Fortica. Hero tipográfico con grilla de puntos, filas de dos columnas (título / contenido), separadores finos. */
+:root {
+  --bg: #0f0f0f; --surface: #161616; --fg: #f3f0ec; --muted: #a8a29c; --line: #2a2725;
+  --accent: #e0303d; --accent-ink: #ffffff; --accent-soft: rgba(224,48,61,.12); --dot: rgba(224,48,61,.38);
+  --display: "Inter Tight", Inter, Arial, sans-serif;
+  --body: Inter, "Segoe UI", Arial, sans-serif;
+  --mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+  --wrap: 1120px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { --bg:#f6f4f1; --surface:#ffffff; --fg:#151413; --muted:#615b55; --line:#e2ddd7; --accent:#c51624; --accent-ink:#ffffff; --accent-soft:rgba(197,22,36,.08); --dot:rgba(197,22,36,.22); color-scheme: light; }
+}
+:root[data-theme="light"] { --bg:#f6f4f1; --surface:#ffffff; --fg:#151413; --muted:#615b55; --line:#e2ddd7; --accent:#c51624; --accent-ink:#ffffff; --accent-soft:rgba(197,22,36,.08); --dot:rgba(197,22,36,.22); color-scheme: light; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.6 var(--body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+/* nav */
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; gap: 24px; min-height: 64px; }
+.logo { background: var(--accent); color: var(--accent-ink); text-decoration: none; font: 500 13px/1 var(--mono); letter-spacing: .28em; padding: 14px 16px; white-space: nowrap; }
+.links { display: flex; gap: 24px; margin-left: auto; font-size: 14px; font-weight: 500; }
+.links a { text-decoration: none; color: var(--muted); }
+.links a:hover { color: var(--fg); }
+.icon-btn { width: 36px; height: 36px; display: grid; place-items: center; background: none; border: 1px solid var(--line); color: var(--fg); cursor: pointer; }
+.icon-btn svg { width: 16px; height: 16px; }
+.cta { background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px 16px; white-space: nowrap; }
+@media (max-width: 760px) { .links { display: none; } .icon-btn { margin-left: auto; } nav .wrap { gap: 10px; } }
+@media (max-width: 440px) { .logo { letter-spacing: .16em; padding: 12px; font-size: 12px; } .cta { padding: 10px 12px; } }
+.row > *, .item > *, .sec-head > *, .contact .wrap > * { min-width: 0; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(var(--dot) 1.2px, transparent 1.3px); background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(105deg, transparent 38%, #000 85%); mask-image: linear-gradient(105deg, transparent 38%, #000 85%); }
+.hero .wrap { position: relative; z-index: 1; padding-block: 72px 56px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 400 12.5px/1.4 var(--mono); color: var(--muted); letter-spacing: .02em; }
+.eyebrow::before { content: ""; width: 7px; height: 7px; background: var(--accent); flex: none; }
+h1 { font: 800 clamp(40px, 7.2vw, 84px)/0.98 var(--display); letter-spacing: -0.035em; margin: 22px 0 26px; max-width: 13ch; text-wrap: balance; }
+.dot { color: var(--accent); }
+.lead { font-size: clamp(16px, 1.6vw, 18.5px); color: var(--muted); max-width: 58ch; margin: 0 0 32px; }
+.lead strong { color: var(--fg); font-weight: 500; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--line); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:hover { border-color: var(--fg); }
+.btn.primary:hover { filter: brightness(1.08); border-color: var(--accent); }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 64px; border-top: 1px solid var(--line); }
+.stat { padding: 20px 20px 4px 0; display: flex; flex-direction: column; gap: 4px; }
+.stat + .stat { padding-left: 20px; border-left: 1px solid var(--line); }
+.stat b { font: 800 30px/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.stat b::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 10px; vertical-align: middle; }
+@media (max-width: 760px) { .stats { grid-template-columns: 1fr 1fr; } .stat:nth-child(3) { padding-left: 0; border-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+/* sections */
+section.block { border-bottom: 1px solid var(--line); }
+section.block > .wrap { padding-block: 80px; }
+.sec-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; margin-bottom: 48px; align-items: end; }
+h2 { font: 800 clamp(30px, 4vw, 46px)/1.04 var(--display); letter-spacing: -0.03em; margin: 14px 0 0; text-wrap: balance; }
+.sec-head p { color: var(--muted); margin: 0; max-width: 56ch; }
+@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; gap: 16px; } }
+
+.rows { border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 56px 1fr 1.3fr; gap: 24px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+.row .num { font: 500 13px/1.6 var(--mono); color: var(--accent); }
+.row h3 { font: 700 22px/1.2 var(--display); letter-spacing: -0.015em; margin: 0; }
+.row p { margin: 0 0 14px; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 400 12px/1 var(--mono); padding: 6px 8px; border: 1px solid var(--line); color: var(--muted); }
+@media (max-width: 760px) { .row { grid-template-columns: 40px 1fr; } .row > div:last-child { grid-column: 2; } }
+
+/* proyectos */
+.projects { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.project { background: var(--bg); padding: 32px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.project.feature { grid-column: 1 / -1; background: var(--surface); display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.kicker { font: 400 12px/1.4 var(--mono); color: var(--accent); letter-spacing: .04em; text-transform: uppercase; }
+.project h3 { font: 800 28px/1.1 var(--display); letter-spacing: -0.02em; margin: 6px 0 0; }
+.project p { margin: 0; color: var(--muted); }
+.project ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.project li { display: grid; grid-template-columns: 14px 1fr; gap: 10px; font-size: 15px; }
+.project li::before { content: ""; width: 6px; height: 6px; background: var(--accent); margin-top: 9px; }
+.project .tags { margin-top: auto; padding-top: 6px; }
+.more { font-size: 14px; font-weight: 600; text-decoration: none; color: var(--fg); border-bottom: 1px solid var(--accent); align-self: flex-start; }
+@media (max-width: 860px) { .projects, .project.feature { grid-template-columns: 1fr; } .project { padding: 24px; } }
+
+.academic { margin-top: 48px; }
+.academic h4 { font: 500 12px/1 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin: 0 0 8px; }
+
+/* fortalezas */
+.strengths { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.strength { background: var(--bg); padding: 28px; }
+.strength h3 { font: 700 20px/1.2 var(--display); margin: 0 0 8px; letter-spacing: -0.01em; }
+.strength p { margin: 0; color: var(--muted); }
+@media (max-width: 700px) { .strengths { grid-template-columns: 1fr; } }
+
+/* stack */
+.stack { display: grid; grid-template-columns: 200px 1fr; border-top: 1px solid var(--line); }
+.stack dt, .stack dd { padding: 18px 0; border-bottom: 1px solid var(--line); margin: 0; }
+.stack dt { font: 500 13px/1.6 var(--mono); color: var(--fg); }
+@media (max-width: 640px) { .stack { grid-template-columns: 1fr; } .stack dt { border-bottom: 0; padding-bottom: 6px; } .stack dd { padding-top: 0; } }
+
+/* timeline */
+.timeline { border-top: 1px solid var(--line); }
+.item { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.item time { font: 400 13px/1.7 var(--mono); color: var(--muted); }
+.item h3 { font: 700 20px/1.25 var(--display); margin: 0; }
+.item .org { color: var(--accent); font-weight: 500; font-size: 15px; margin: 2px 0 8px; }
+.item p { margin: 0; color: var(--muted); }
+@media (max-width: 640px) { .item { grid-template-columns: 1fr; gap: 6px; } }
+
+/* contacto */
+.contact { background: var(--accent); color: var(--accent-ink); }
+.contact .wrap { padding-block: 80px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.contact h2 { color: var(--accent-ink); margin: 0 0 14px; }
+.contact p { margin: 0; opacity: .9; max-width: 48ch; }
+.channels { display: flex; flex-direction: column; gap: 10px; }
+.channel { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; border: 1px solid rgba(255,255,255,.4); min-width: 0; }
+.channel span { font: 400 12px/1 var(--mono); opacity: .8; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .06em; }
+.channel strong { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.channel a, .channel button { color: var(--accent-ink); background: none; border: 1px solid rgba(255,255,255,.55); padding: 8px 12px; font: 600 13px/1 var(--body); text-decoration: none; cursor: pointer; white-space: nowrap; }
+.channel a:hover, .channel button:hover { background: rgba(255,255,255,.14); }
+@media (max-width: 760px) { .contact .wrap { grid-template-columns: 1fr; } }
+
+footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font: 400 12.5px/1.5 var(--mono); color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav aria-label="Principal">
+  <div class="wrap">
+    <a class="logo" href="#inicio">ABIGAIL CANAAN</a>
+    <div class="links">
+      <a href="#como-trabajo">Cómo trabajo</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#stack">Stack</a>
+    </div>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <a class="cta" href="#contacto">Hablemos</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div class="eyebrow">Ing. en Sistemas de Información · UTN FRC · Córdoba, Argentina</div>
+    <h1>Hago sistemas que se usan todos los días<span class="dot">.</span></h1>
+    <p class="lead">Soy <strong>desarrolladora backend y analista funcional</strong>, y estoy en 5.º año de Ingeniería en Sistemas. En la Secretaría de Salud de la Municipalidad de Córdoba desarrollo <strong>DispensAR</strong>, el sistema de dispensa de medicamentos que usan más de 100 centros de salud. Me ocupo del sistema completo: hablo con los usuarios, diseño la base de datos, programo, despliego y capacito.</p>
+    <div class="actions">
+      <a class="btn primary" href="#proyectos">Ver proyectos <span aria-hidden="true">→</span></a>
+      <a class="btn" href="https://www.linkedin.com/in/abigailsaracanaan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/abs1cnn" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>+100</b><span>centros de salud usan DispensAR</span></div>
+      <div class="stat"><b>+850</b><span>commits propios en el sistema</span></div>
+      <div class="stat"><b>5</b><span>padrones clínicos en producción</span></div>
+      <div class="stat"><b>8,19</b><span>promedio en la carrera</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="block" id="como-trabajo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Cómo trabajo</div><h2>Del pedido del usuario al sistema en producción<span class="dot">.</span></h2></div>
+      <p>No espero que me lleguen requerimientos cerrados. Voy a los centros de salud, entiendo cómo trabajan y recién ahí diseño. Este es el recorrido que hago en cada proyecto.</p>
+    </div>
+    <div class="rows">
+      <div class="row"><div class="num">01</div><h3>Relevamiento y análisis funcional</h3><div><p>Entrevisto a usuarios finales, ordeno sus procesos y los paso a flujos, casos de uso y reglas de negocio claras.</p><div class="tags"><span class="tag">Requerimientos</span><span class="tag">Flujos funcionales</span><span class="tag">UML</span></div></div></div>
+      <div class="row"><div class="num">02</div><h3>Modelado de datos</h3><div><p>Diseño bases de datos pensadas para durar: integridad, auditoría, índices y stored procedures que resuelven lógica pesada cerca de los datos.</p><div class="tags"><span class="tag">SQL Server</span><span class="tag">Triggers</span><span class="tag">Jobs</span><span class="tag">DBML</span></div></div></div>
+      <div class="row"><div class="num">03</div><h3>Desarrollo</h3><div><p>APIs REST con usuarios, roles y permisos, tiempo real y patrones de diseño donde el dominio lo pide. Frontend en React cuando hace falta.</p><div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">JWT</span><span class="tag">React</span></div></div></div>
+      <div class="row"><div class="num">04</div><h3>Testing y despliegue</h3><div><p>Tests automáticos y pipelines que despliegan, verifican que el sistema esté sano y vuelven atrás solos si algo falla.</p><div class="tags"><span class="tag">Pytest</span><span class="tag">GitHub Actions</span><span class="tag">Rollback</span><span class="tag">Sentry</span></div></div></div>
+      <div class="row"><div class="num">05</div><h3>Capacitación y soporte</h3><div><p>Capacité a profesionales de más de 100 centros de salud y hago guardias para resolver incidentes en producción.</p><div class="tags"><span class="tag">Capacitación</span><span class="tag">On-call</span><span class="tag">Documentación</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="proyectos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Proyectos</div><h2>Sistemas reales, con usuarios reales<span class="dot">.</span></h2></div>
+      <p>Lo que hago en la Secretaría de Salud de la Municipalidad de Córdoba desde febrero de 2025, y algunos proyectos de la facultad.</p>
+    </div>
+
+    <div class="projects">
+      <article class="project feature">
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div class="kicker">Principal desarrolladora · Secretaría de Salud</div>
+          <h3>DispensAR</h3>
+          <p>Sistema de gestión y dispensa de medicamentos e insumos médicos. Lo usan a diario los profesionales de más de 100 centros de salud municipales para registrar dispensas, controlar stock y pedir provisión.</p>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">SQLAlchemy</span><span class="tag">SQL Server</span><span class="tag">WebSockets</span><span class="tag">Pytest</span><span class="tag">Selenium</span></div>
+        </div>
+        <ul>
+          <li>Base de datos completa: stored procedures, triggers de stock, índices, auditoría y migraciones desde Excel, Access y PDF.</li>
+          <li>Pedidos de provisión generados automáticamente a partir del análisis de consumo, con transacciones idempotentes.</li>
+          <li>Gestión de usuarios, roles y permisos con JWT.</li>
+          <li>Validación y procesamiento de remitos con patrones Strategy y Chain of Responsibility.</li>
+          <li>Tests unitarios, de integración y de endpoints, con reporte automático a Discord.</li>
+          <li>Carga automática de formularios del programa Remediar con Selenium.</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div class="kicker">Diseño de BD, backend y frontend</div>
+        <h3>Programas de Salud</h3>
+        <p>Cinco padrones clínicos para el seguimiento de pacientes: Diabetes, Hipertensión, Cardiopatías, Embarazo e Inmunizaciones.</p>
+        <ul>
+          <li>Integración con RENAPER, Historia Clínica Electrónica y DispensAR.</li>
+          <li>Cálculo de riesgo cardiovascular con la API de la OMS.</li>
+          <li>Integración con Google Sheets con Idempotency-Key para evitar registros duplicados.</li>
+        </ul>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">APIs externas</span></div>
+      </article>
+
+      <article class="project">
+        <div class="kicker">Infraestructura</div>
+        <h3>CI/CD y servidores</h3>
+        <p>Pipelines que llevan cada cambio a producción de forma segura en Windows Server.</p>
+        <ul>
+          <li>Deploy automático, tests, health check y rollback automático.</li>
+          <li>Servicios en producción con IIS, PM2 y NSSM; monitoreo de servidores en AWS.</li>
+          <li>Git Flow, pull requests y code review en GitHub.</li>
+        </ul>
+        <div class="tags"><span class="tag">GitHub Actions</span><span class="tag">IIS</span><span class="tag">AWS</span><span class="tag">Docker</span></div>
+      </article>
+    </div>
+
+    <div class="academic">
+      <h4>Facultad y otros</h4>
+      <div class="rows">
+        <div class="row"><div class="num">·</div><h3>Microservicios para concesionaria</h3><div><p>Backend para gestionar pruebas de manejo con API Gateway y seguridad. Consume APIs de ubicación GPS, detecta cuando un auto sale de la zona permitida, genera alertas y marca incidentes.</p><div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring Security</span><span class="tag">JPA</span></div></div></div>
+        <div class="row"><div class="num">·</div><h3>Sitio web de Fortica</h3><div><p>Diseño y desarrollo del sitio responsivo de la consultora, con entregas por sprint.</p><div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Scrum</span></div><p style="margin:14px 0 0"><a class="more" href="https://fortica.com.ar" target="_blank" rel="noopener">fortica.com.ar ↗</a></p></div></div>
+        <div class="row"><div class="num">·</div><h3>Bombino, gestión de bodega</h3><div><p>Aplicación de escritorio para la cátedra Diseño de Sistemas: desde el enunciado y los casos de uso hasta el producto funcionando, con arquitectura MVC.</p><div class="tags"><span class="tag">Java</span><span class="tag">MVC</span><span class="tag">UML</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fortalezas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Fortalezas</div><h2>Lo que aporto a un equipo<span class="dot">.</span></h2></div>
+      <p>Además de programar, me ocupo de que el sistema resuelva el problema correcto y de que la gente lo pueda usar.</p>
+    </div>
+    <div class="strengths">
+      <div class="strength"><h3>Análisis funcional</h3><p>Traduzco lo que necesita un área en requerimientos, flujos y un modelo de datos que el equipo puede construir.</p></div>
+      <div class="strength"><h3>Autonomía</h3><p>Aprendo, investigo y resuelvo por mi cuenta. Llevo un sistema de punta a punta sin que me tengan que guiar paso a paso.</p></div>
+      <div class="strength"><h3>Coordinación de equipos</h3><p>Organizo el trabajo con Scrum y fui ayudante becaria en Algoritmos y Estructuras de Datos, a cargo de grupos de estudiantes.</p></div>
+      <div class="strength"><h3>Comunicación con usuarios</h3><p>Capacito a profesionales de la salud y explico lo técnico en palabras simples.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experiencia">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Experiencia y estudios</div><h2>Trayectoria<span class="dot">.</span></h2></div>
+      <p>Trabajo 6 horas diarias en la Municipalidad mientras curso el último año de la carrera.</p>
+    </div>
+    <div class="timeline">
+      <div class="item"><time>Feb 2025 – hoy</time><div><h3>Desarrolladora Backend / Full Stack · DBA · Analista Funcional</h3><div class="org">Municipalidad de Córdoba · Secretaría de Salud</div><p>DispensAR, Programas de Salud, CI/CD e infraestructura, análisis funcional y capacitación.</p></div></div>
+      <div class="item"><time>2023</time><div><h3>Ayudante becaria · Algoritmos y Estructuras de Datos</h3><div class="org">UTN Facultad Regional Córdoba</div><p>Docencia en Python, corrección de entregas y coordinación de grupos.</p></div></div>
+      <div class="item"><time>2022 – en curso</time><div><h3>Ingeniería en Sistemas de Información · 5.º año</h3><div class="org">UTN Facultad Regional Córdoba</div><p>Promedio 8,19. Inglés intermedio.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Stack</div><h2>Herramientas que uso<span class="dot">.</span></h2></div>
+      <p>Las que uso en producción, todos los días.</p>
+    </div>
+    <dl class="stack">
+      <dt>Backend</dt><dd><div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLAlchemy</span><span class="tag">Pydantic</span><span class="tag">JWT</span><span class="tag">WebSockets</span><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Node.js</span></div></dd>
+      <dt>Bases de datos</dt><dd><div class="tags"><span class="tag">SQL Server</span><span class="tag">Modelado</span><span class="tag">Stored procedures</span><span class="tag">Triggers</span><span class="tag">Agent Jobs</span><span class="tag">Query tuning</span><span class="tag">ETL y migración</span></div></dd>
+      <dt>DevOps</dt><dd><div class="tags"><span class="tag">GitHub Actions</span><span class="tag">Docker</span><span class="tag">IIS</span><span class="tag">PM2</span><span class="tag">NSSM</span><span class="tag">Windows Server</span><span class="tag">AWS</span></div></dd>
+      <dt>Frontend</dt><dd><div class="tags"><span class="tag">React</span><span class="tag">Vite</span></div></dd>
+      <dt>Testing</dt><dd><div class="tags"><span class="tag">Pytest</span><span class="tag">pytest-cov</span><span class="tag">Postman</span><span class="tag">Bruno</span><span class="tag">Sentry</span></div></dd>
+      <dt>Integraciones</dt><dd><div class="tags"><span class="tag">RENAPER</span><span class="tag">HCE</span><span class="tag">PUCO</span><span class="tag">API OMS</span><span class="tag">Colegio de Farmacéuticos</span><span class="tag">Selenium</span></div></dd>
+      <dt>Diseño y método</dt><dd><div class="tags"><span class="tag">UML</span><span class="tag">MVC</span><span class="tag">Microservicios</span><span class="tag">Patrones de diseño</span><span class="tag">Scrum</span><span class="tag">Git Flow</span></div></dd>
+    </dl>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <h2>Hablemos<span aria-hidden="true">.</span></h2>
+      <p>Me interesa sumarme a proyectos de la facultad y de investigación, sobre todo donde haga falta análisis funcional, bases de datos o backend.</p>
+    </div>
+    <div class="channels">
+      <div class="channel"><div><span>Email</span><strong id="email">abigailcanaan@gmail.com</strong></div><button type="button" id="copy-email">Copiar</button></div>
+      <div class="channel"><div><span>LinkedIn</span><strong>linkedin.com/in/abigailsaracanaan</strong></div><a href="https://www.linkedin.com/in/abigailsaracanaan/" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="channel"><div><span>GitHub</span><strong>github.com/abs1cnn</strong></div><a href="https://github.com/abs1cnn" target="_blank" rel="noopener">Abrir ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Abigail Sara Canaan</span><span>Córdoba, Argentina</span></div></footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var current = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    var next = current === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+  var btn = document.getElementById('copy-email');
+  btn.addEventListener('click', function () {
+    var text = document.getElementById('email').textContent;
+    var done = function () { btn.textContent = 'Copiado'; setTimeout(function () { btn.textContent = 'Copiar'; }, 1800); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(document.getElementById('email')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Seleccionado'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+  });
+})();
+</script>
+
+</body>
+</html>
